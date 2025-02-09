@@ -1,19 +1,20 @@
 import cds, { Request } from "@sap/cds";
 import axios from "axios";
+import { AnalyzeTextResponse, CustomError } from "./lib/types/global.types";
 
 export default cds.service.impl(async function () {
     this.on("analyzeText", async (req: Request) => {
         const text: string = req.data.text;
         const HF_API_KEY: string | undefined = process.env.HF_API_KEY;
-        const API_URL: string = "https://api-inference.huggingface.co/models/openai-community/gpt2";
+        const API_URL: string | undefined = process.env.API_URL;
 
         if (!HF_API_KEY) {
-            return req.error(500, "Hugging Face API Key is missing");
+            return new CustomError("HF_API_KEY is not set", 400);
         }
 
         try {
-            const response = await axios.post<{ generated_text: string }[]>(
-                API_URL,
+            const response = await axios.post<AnalyzeTextResponse[]>(
+                API_URL as string,
                 { inputs: text },
                 {
                     headers: {
@@ -24,13 +25,11 @@ export default cds.service.impl(async function () {
             );
 
             if (!response.data || response.data.length === 0) {
-                return req.error(500, "API returned an empty response");
+                return new CustomError("Failed to analyze text", 500);
             }
-
-            return { generated_text: response.data[0].generated_text };
+            return response.data[0] as AnalyzeTextResponse;
         } catch (error) {
-            console.error("Hugging Face API Error:", error);
-            return req.error(500, "Failed to analyze text");
+            return new CustomError("Failed to analyze text", 500);
         }
     });
 });
