@@ -1,0 +1,24 @@
+.centeredBox {
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  margin-top: 10vh; /* Sayfanın üst kısmında ortalanmış olacak */
+  padding: 20px;
+  background-color: #f8f9fa; /* Hafif gri arka plan */
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.customButton {
+  margin-top: 10px;
+  background-color: #007aff !important; /* Apple mavi */
+  color: white !important;
+  border-radius: 8px;
+}
+
+.resultText {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}

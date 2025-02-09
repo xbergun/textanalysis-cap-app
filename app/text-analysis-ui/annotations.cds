@@ -1,0 +1,1 @@
+using TextAnalysisService as service from '../../srv/cat-service';

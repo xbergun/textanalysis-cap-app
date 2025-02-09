@@ -1,0 +1,38 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="textanalysisui.controller.Main"
+>
+    <Page showHeader="false">
+        <content>
+            <VBox
+                class="centeredBox"
+                justifyContent="Center"
+                alignItems="Center"
+            >
+                <Title
+                    text="Text Analysis"
+                    level="H1"
+                />
+
+                <Input
+                    id="inputText"
+                    placeholder="Enter text to analyze..."
+                    width="100%"
+                />
+
+                <Button
+                    text="Analyze"
+                    press="onAnalyzePress"
+                    class="customButton"
+                />
+
+                <Text
+                    id="resultText"
+                    text="Result will appear here."
+                    class="resultText"
+                />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

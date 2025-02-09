@@ -1,8 +1,8 @@
-import cds from "@sap/cds";
+import cds, { Request } from "@sap/cds";
 import axios from "axios";
 
 export default cds.service.impl(async function () {
-    this.on("analyzeText", async (req) => {
+    this.on("analyzeText", async (req: Request) => {
         const text: string = req.data.text;
         const HF_API_KEY: string | undefined = process.env.HF_API_KEY;
         const API_URL: string = "https://api-inference.huggingface.co/models/openai-community/gpt2";
