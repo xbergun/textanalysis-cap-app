@@ -39,13 +39,10 @@
       "auth": {
         "kind": "xsuaa"
       },
-      "destination": {
-        "kind": "rest"
-      },
-      "HuggingFaceApi": {
+      "HuggingFaceAPI": {
         "kind": "rest",
         "credentials": {
-          "destination": "HuggingFaceApi"
+          "destination": "HuggingFaceAPI"
         }
       }
     }
