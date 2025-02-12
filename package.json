@@ -7,7 +7,10 @@
   "private": true,
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.14.1",
+    "@sap-cloud-sdk/connectivity": "^3.26.0",
+    "@sap-cloud-sdk/http-client": "^3.26.0",
     "@sap/cds": "^8",
+    "@sap/xssec": "^4",
     "axios": "^1.7.9",
     "express": "^4"
   },
@@ -30,5 +33,21 @@
   },
   "workspaces": [
     "app/*"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "xsuaa"
+      },
+      "destination": {
+        "kind": "rest"
+      },
+      "HuggingFaceApi": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "HuggingFaceApi"
+        }
+      }
+    }
+  }
 }
